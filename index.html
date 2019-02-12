@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Unity WebGL Player | WebGL_Javascript_Integration</title>
+    <link rel="shortcut icon" href="TemplateData/favicon.ico">
+    <link rel="stylesheet" href="TemplateData/style.css">
+    <script src="TemplateData/UnityProgress.js"></script>
+    <script src="Build/UnityLoader.js"></script>
+    <style>
+      #gameContainer{
+        float: left;
+      }
+      #main{
+        float: right;
+      }
+    </style>
+    <script>
+      var gameInstance = UnityLoader.instantiate("gameContainer", "Build/webGL_JavaScript.json", {onProgress: UnityProgress});
+
+      function fl(value) {
+        gameInstance.SendMessage("Main Camera", "ctrl", value);
+      }
+    </script>
+  </head>
+  <body>
+    <div class="webgl-content">
+      <div id="gameContainer" style="width: 960px; height: 600px"></div>
+
+      <div id="main"><select onchange="fl(this.value)">
+        <option value=""></option>
+        <option value="1">cube</option>
+        <option value="2">capsule</option>
+        <option value="3">tree</option>
+        <option value="4">sphere</option>
+        <option value="5">hide all</option>
+        <option value="6">show all</option>
+      </select>
+      </div>
+
+    </div>
+  </body>
+</html>
